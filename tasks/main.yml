@@ -1,0 +1,10 @@
+---
+
+- name: Install munin
+  apt: name=munin state=present
+  tags: munin
+
+- name: Configuration de munin
+  template: src=munin.conf.j2 dest=/etc/munin/munin.conf
+  notify: restart munin
+  tags: munin

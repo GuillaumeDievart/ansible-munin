@@ -1,0 +1,16 @@
+{% for host in munin.hosts %}
+
+[{{ host.name }}.{{ host.group }}]
+  address {{ host.ip }}
+  use_node_name yes
+{% endfor %}
+
+includedir /etc/munin/munin-conf.d
+
+contacts {{ munin.contacts | join(" ", attribute='name') }}
+{% for contact in munin.contacts %}
+
+contact.{{ contact.name }}.command mail -s "Munin notif ${var:host}" {{ contact.email }}
+contact.{{ contact.name }}.always_send warning critical
+{% endfor %}
+
