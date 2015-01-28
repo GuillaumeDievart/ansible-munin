@@ -8,3 +8,10 @@
   template: src=munin.conf.j2 dest=/etc/munin/munin.conf
   notify: restart munin
   tags: munin
+
+- name: Configuration des serveurs munin-node
+  template: src=munin-node.j2 dest=/etc/munin/munin-conf.d/{{ item.name }}
+  with_items: munin.hosts
+  notify: restart munin
+  tags: munin
+  when: munin.hosts is defined

@@ -21,6 +21,6 @@ munin:
   hosts:
     - { name: 'test', group: 'test', ip: 'localhost' }
   contacts:
-    - { name: 'gdievart', email: 'gdievart@example.com' }
-    - { name: 'sklein', email: 'sklein@example.com' }
+    - { name: 'gdievart', email: 'gdievart@example.com', command: 'mail -s "Munin notif ${var:host}"' }
+    - { name: 'sklein', email: 'sklein@example.com', command: 'mail -s "Munin notif ${var:host}"' }
 ```
