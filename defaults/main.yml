@@ -1,0 +1,7 @@
+---
+
+munin:
+  hosts:
+    - { name: 'localhost', group: 'localhost', ip: 'localhost' }
+  contacts:
+    - { name: 'admin', email: 'admin@example.com', command: 'mail -s "Munin notif ${var:host}"' }
